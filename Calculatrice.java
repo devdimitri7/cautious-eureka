@@ -1,4 +1,3 @@
-package dimi.org;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -69,24 +68,19 @@ public class Calculatrice extends JFrame {
 		
 		//----------------------------------------
 		
+		JPanel ok = new JPanel();
+		ok.setLayout(new BorderLayout());
+		
 		Font police = new Font("Tahoma", Font.BOLD, 18);
 		label.setFont(police);
-		label.setHorizontalAlignment(JLabel.CENTER);
+		label.setHorizontalAlignment(JLabel.RIGHT);
 		JPanel pan = new JPanel();
 		pan.setBackground(Color.white);
+		pan.setLayout(new BorderLayout());		
 		pan.add(label);
 		conteneur.setBackground(Color.LIGHT_GRAY);
 		conteneur.setLayout(new GridBagLayout());
 		GridBagConstraints g = new GridBagConstraints();
-		
-		//alignement du label
-		g.fill = GridBagConstraints.HORIZONTAL;
-		g.gridx = 0;
-		g.gridy = 0;
-		g.ipady = 4;
-		g.gridy = 0;
-				
-		conteneur.add(pan, g);
 		
 		//alignement des boutons
 		g.fill = GridBagConstraints.HORIZONTAL;
@@ -149,7 +143,9 @@ public class Calculatrice extends JFrame {
 		g.gridy = 6;
 		conteneur.add(bouton4, g);
 		//-----------------------------------------------
-		this.setContentPane(conteneur);
+		ok.add(pan, BorderLayout.NORTH);
+		ok.add(conteneur, BorderLayout.CENTER);
+		this.setContentPane(ok);
 		this.setVisible(true);
 	}
 	
@@ -206,6 +202,7 @@ public class Calculatrice extends JFrame {
 			
 	   }
 	}
+	//Dans cette classe interne, j'affiche les résultat obtenus en les convertissant en String. Pour qu'ils puissent apparaitre dans le label
 	class Boutonegal implements ActionListener{
 		public void actionPerformed(ActionEvent argO) {
 			
